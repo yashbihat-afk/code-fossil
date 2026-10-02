@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Fossil Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="chat-app">
+        <header class="page-header">
+            <p class="eyebrow">LOCAL AI ASSISTANT</p>
+            <h1>Code Fossil Assistant</h1>
+            <p class="intro">Ask me about the code.</p>
+        </header>
+
+        <section class="chat-box" aria-live="polite" aria-label="Conversation">
+            {% if messages %}
+                {% for msg in messages %}
+                    {% if msg.type == 'human' %}
+                        <div class="message user">{{ msg.content }}</div>
+                    {% elif msg.type == 'ai' %}
+                        <div class="message agent">{{ msg.content }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p class="empty-state">Your conversation will appear here.</p>
+            {% endif %}
+        </section>
+
+        <form method="POST" action="{{ url_for('send') }}" class="input-form" id="chatForm">
+            <input type="text" name="message" placeholder="Ask about the code..." aria-label="Your message" required>
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            <button type="submit">Send</button>
+        </form>
+
+        <footer class="chat-footer">
+            <span>Powered by Ollama</span>
+            <a class="clear-btn" href="{{ url_for('clear') }}">New conversation</a>
+        </footer>
+    </main>
+
+    <script>
+        // Get user's location once when page loads
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
+            });
+        }
+    </script>
+</body>
+</html>

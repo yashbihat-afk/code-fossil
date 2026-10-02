@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="scale" x1="180" y1="690" x2="650" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#397d51"/>
+      <stop offset="1" stop-color="#174f3a"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="350" y1="220" x2="600" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b6d69b"/>
+      <stop offset="1" stop-color="#75ae79"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Legs and claws sit behind the coiled body. -->
+  <g stroke="#205f43" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M348 337 284 301 251 326M286 301l-9-35M287 302l-37-4M424 475l-82 24-23 57M339 499l-35-19M339 499l-34 20M592 552l76-10 33 49M671 542l35-24M671 542l10 29M552 668l-13 73 48 41M539 741l-32 12M539 741l24 21" stroke-width="22"/>
+    <path d="m252 326-22 10 9-21m65 245-18 18 22-2m448 3 17 20-25-7m57 89 20 15-25-2" stroke-width="9"/>
+  </g>
+
+  <!-- Long, coiling body and tapered tail. -->
+  <path d="M516 211c-116-48-251 6-260 126-9 119 132 191 257 153 100-31 141 47 107 136-39 103-168 151-266 103-59-29-81-84-53-139 13-25 36-43 65-56" stroke="url(#scale)" stroke-width="53" stroke-linecap="round"/>
+  <path d="M365 544c-39-14-75-47-111-68 3 47 25 81 69 99l47-31Z" fill="url(#scale)"/>
+
+  <!-- Pale segmented belly follows the inside of the coil. -->
+  <path d="M405 263c-77 9-124 64-112 126 10 53 67 91 130 100m187 51c16 53-14 111-61 145-37 27-83 39-124 35" stroke="url(#belly)" stroke-width="20" stroke-linecap="round" stroke-dasharray="2 15" opacity=".9"/>
+
+  <!-- Head, horns, and swept-back mane. -->
+  <path d="M493 211c13-35 39-64 69-76l-9 48c24-24 50-34 78-31l-27 35 52-4-31 29 37 15-47 20-28 31-40-5-22 21-37-22-35 3 20-31Z" fill="url(#scale)"/>
+  <path d="M540 158c-12-26-9-52 9-76 8 30 24 47 47 53m13 6c1-28 15-49 43-65-6 30 0 51 18 68" fill="#286b49" stroke="#205f43" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+  <path d="M506 185c-37-6-63-23-82-53 39 10 68 7 91-9-25-23-37-49-36-79 24 32 50 48 80 48m-54 122c-35 14-59 37-71 73 34-20 64-27 93-20" fill="#397d51" stroke="#205f43" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+  <path d="M643 199c18-9 38-11 61-4m-62 18c22 8 39 20 52 38" stroke="#205f43" stroke-linecap="round" stroke-width="7"/>
+  <path d="M632 190c11-9 23-10 35-2-11 10-22 11-35 2Z" fill="#d7e8a8"/>
+  <circle cx="649" cy="190" r="4.5" fill="#174f3a"/>
+
+  <!-- Small dorsal scales add a dragon silhouette without crowding the page. -->
+  <g fill="#397d51">
+    <path d="m438 184 12-30 20 25Zm-59 11 7-31 22 26Zm-52 28-2-31 27 20Zm-39 41-10-29 32 13Zm-20 56-19-23 34 4Z"/>
+  </g>
+</svg>
