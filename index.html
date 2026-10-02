@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Fossil — Git History Archaeologist</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">✣</span><span>CODE FOSSIL</span></div>
+        <p class="eyebrow">GIT HISTORY ARCHAEOLOGIST</p>
+        <nav class="nav" aria-label="Primary">
+          <button class="nav-item active" data-view="overview"><span>⌂</span> Overview</button>
+          <button class="nav-item" data-view="timeline"><span>◷</span> Evolution timeline</button>
+          <button class="nav-item" data-view="graph"><span>⌘</span> Mutation graph</button>
+          <button class="nav-item" data-view="scar-tissue"><span>⌁</span> Scar tissue</button>
+          <button class="nav-item" data-view="files"><span>▤</span> File atlas</button>
+          <button class="nav-item" onclick="window.location.href=' http://127.0.0.1:5002'">
+  <span> π </span> AI Agent
+</button>
+        </nav>
+        <div class="sidebar-foot"><span class="pulse"></span> Local analysis engine ready<br /><small>AST + co-change + NLP</small></div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="kicker">REPOSITORY / <span id="repo-name">payments-api</span></p>
+            <h1 id="view-title">The codebase remembers.</h1>
+          </div>
+          <div class="top-actions">
+            <button class="ghost-button" id="load-repo">＋ Load repository</button>
+            <button class="primary-button" id="run-analysis">Run analysis <span>↗</span></button>
+          </div>
+        </header>
+
+        <section id="view-overview" class="view active-view">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="kicker">ARCHAEOLOGICAL BRIEFING · 11,482 COMMITS</p>
+              <h2>Find out <em>why</em> the code became what it is.</h2>
+              <p class="lede">Code Fossil reconstructs structural change across Git history, then surfaces the coupling, churn, and human intent hidden between commits.</p>
+              <div class="hero-cta"><button class="primary-button" data-view-jump="timeline">Explore the fossil record <span>→</span></button><span class="muted">Last scan 8 min ago</span></div>
+            </div>
+            <div class="age-card">
+              <div class="card-label">BIOLOGICAL AGE</div>
+              <div class="age-value" id="age-years">3.7 <span>years</span></div>
+              <div class="age-rule"><span style="width:68%"></span></div>
+              <div class="age-meta"><span>young</span><span>ancient</span></div>
+              <p>Core domain logic is stable. The checkout boundary shows the most recent adaptation pressure.</p>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <article class="metric-card"><span class="metric-icon coral">⌁</span><div><span class="metric-label">SCAR TISSUE</span><strong id="metric-hotspots">7 hotspots</strong><small id="metric-hotspots-sub">2 need attention</small></div></article>
+            <article class="metric-card"><span class="metric-icon mint">⌘</span><div><span class="metric-label">MUTATION COUPLING</span><strong id="metric-coupling">0.82</strong><small>strongest file coupling</small></div></article>
+            <article class="metric-card"><span class="metric-icon lilac">◷</span><div><span class="metric-label">LAST ADAPTATION</span><strong id="metric-latest">14 days ago</strong><small id="metric-latest-sub">split payment flow</small></div></article>
+            <article class="metric-card"><span class="metric-icon amber">⌘</span><div><span class="metric-label">AST EVENTS</span><strong id="metric-ast">1,248</strong><small id="metric-ast-sub">across 392 files</small></div></article>
+          </div>
+
+          <div class="section-head"><div><p class="kicker">THE LONG VIEW</p><h3>Change accumulates in layers.</h3></div><button class="text-button" data-view-jump="timeline">Open timeline →</button></div>
+          <div class="timeline-preview"><div class="timeline-axis"><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>NOW</span></div><div class="timeline-bars"><i style="height:33%"></i><i style="height:46%"></i><i style="height:58%"></i><i class="hot" style="height:82%"></i><i style="height:51%"></i><i class="hot" style="height:95%"></i><i style="height:69%"></i><i style="height:76%"></i><i style="height:44%"></i><i style="height:88%"></i><i style="height:61%"></i><i style="height:72%"></i><i class="hot" style="height:100%"></i><i style="height:67%"></i><i style="height:78%"></i><i style="height:52%"></i><i style="height:64%"></i><i style="height:83%"></i><i style="height:55%"></i><i style="height:73%"></i></div><div class="timeline-note"><span class="dot coral-dot"></span> structural change <span class="dot amber-dot"></span> scar tissue</div></div>
+        </section>
+
+        <section id="view-timeline" class="view">
+          <div class="section-head"><div><p class="kicker">EVOLUTION TIMELINE</p><h2>Every refactor leaves a layer.</h2><p class="subcopy">Structural events inferred from AST diffs, commit messages, and file co-change.</p></div><select id="timeline-filter" class="select"><option value="all">All events</option><option value="refactor">Refactors</option><option value="bug">Bug fixes</option><option value="feature">Features</option></select></div>
+          <div class="timeline-detail" id="timeline-detail"></div>
+        </section>
+
+        <section id="view-graph" class="view">
+          <div class="section-head"><div><p class="kicker">MUTATION GRAPH</p><h2>Coupling is the hidden skeleton.</h2><p class="subcopy">Files that repeatedly change together become architectural dependencies.</p></div><div class="legend"><span><i class="legend-dot strong"></i> strong coupling</span><span><i class="legend-dot weak"></i> weak coupling</span></div></div>
+          <div class="graph-layout"><div class="graph-card"><svg id="mutation-graph" viewBox="0 0 760 420" role="img" aria-label="Mutation coupling graph"></svg></div><aside class="insight-card"><p class="kicker">SELECTED CLUSTER</p><h3>Checkout boundary</h3><p>Four files mutate as one unit in <strong>68%</strong> of recent changes.</p><div class="cluster-list"><span>checkout/authorize.ts</span><span>ledger/entry.ts</span><span>events/payment.ts</span><span>api/payment-route.ts</span></div><button class="text-button" data-view-jump="files">Inspect files →</button></aside></div>
+        </section>
+
+        <section id="view-scar-tissue" class="view">
+          <div class="section-head"><div><p class="kicker">SCAR TISSUE DETECTOR</p><h2>Where the code keeps getting hurt.</h2><p class="subcopy">Hotspots combine churn, bug-fix density, rollback frequency, and structural instability.</p></div><span class="status-chip">7 regions flagged</span></div>
+          <div class="hotspot-table" id="hotspot-table"></div>
+        </section>
+
+        <section id="view-files" class="view">
+          <div class="section-head"><div><p class="kicker">FILE ATLAS</p><h2>Biological age by file.</h2><p class="subcopy">A living map of the repository’s oldest, busiest, and most adapted tissue.</p></div><input id="file-search" class="search" placeholder="Search files…" /></div>
+          <div class="file-grid" id="file-grid"></div>
+        </section>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="repo-modal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="repo-modal-title">
+        <button class="modal-close" id="close-modal" aria-label="Close">×</button>
+        <p class="kicker">NEW REPOSITORY</p>
+        <h2 id="repo-modal-title">Bring a codebase into the lab.</h2>
+        <p class="modal-copy">Paste a local path or Git URL. This prototype keeps the handoff ready for a real analysis service.</p>
+        <label for="repo-input">Repository path or URL</label>
+        <input id="repo-input" class="repo-input" placeholder="https://github.com/acme/payments-api" />
+        <div class="modal-actions"><button class="ghost-button" id="cancel-repo">Cancel</button><button class="primary-button" id="confirm-repo">Add repository <span>→</span></button></div>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
